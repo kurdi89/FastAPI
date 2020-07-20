@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/public/assets/favicon/favicon-16x16.png"
+      type="image/gif"
+      sizes="16x16"
+    />
+
+    <title>FastAPI Udacity</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <!-- Custom styles for this template -->
+    <link
+      href="{{ url_for('static', path='/css/main.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-left mb-0">Hello Udacians</h3>
+        </div>
+        <style>
+          img.card-img-top {
+            max-height: 245px;
+            /* object-fit: cover !important; */
+          }
+          img.showcase {
+            /* object-fit: contain !important; */
+            object-fit: cover;
+            max-height: 200px;
+          }
+        </style>
+      </header>
+
+      <section class="px-3">
+        <p class="lead">
+          upload image, choose a style and submit {{ process }}
+        </p>
+        <div class="container mb-2">
+          <div class="row mb-2">
+            <div class="col">
+              <div class="card">
+                <img
+                  src="{{ url_for('static', path='/img/thumbs/la_muse.jpg') }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body p-0">
+                  <p class="card-text text-dark">
+                    La Muse
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="{{ url_for('static', path='/img/thumbs/scream.jpg') }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body p-0">
+                  <p class="card-text text-dark">
+                    The Scream
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="{{ url_for('static', path='/img/thumbs/shipwreck.jpg') }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body p-0">
+                  <p class="card-text text-dark">
+                    The Shipwreck
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- </div>
+          <div class="row"> -->
+            <div class="col">
+              <div class="card">
+                <img
+                  src="{{ url_for('static', path='/img/thumbs/rain_princess.jpg') }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body p-0">
+                  <p class="card-text text-dark">
+                    Rain Princess
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="{{ url_for('static', path='/img/thumbs/udnie.jpg') }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body p-0">
+                  <p class="card-text text-dark">
+                    Udnie
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img
+                  src="{{ url_for('static', path='/img/thumbs/wave.jpg') }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body p-0">
+                  <p class="card-text text-dark">
+                    The Wave
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form
+          class="form-file"
+          action="/uploadfile/"
+          enctype="multipart/form-data"
+          method="post"
+        >
+          <input
+            type="file"
+            name="file"
+            class="form-file-input"
+            id="imageFile"
+          />
+          <label class="form-file-label" for="imageFile">
+            <span class="form-file-text">Choose image...</span>
+            <span class="form-file-button">Browse</span>
+          </label>
+          <div class="form-check form-check-inline my-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="style"
+              id="option1"
+              value="la_muse"
+              checked
+            />
+            <label class="form-check-label" for="option1">La Muse</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="style"
+              id="option2"
+              value="scream"
+            />
+            <l class="form-check-label" for="option2">The Scream</l>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="style"
+              id="option3"
+              value="shipwreck"
+            />
+            <label class="form-check-label" for="option3"
+              >The Shipwreck of the minotaur</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="style"
+              id="option4"
+              value="rain_princess"
+            />
+            <label class="form-check-label" for="option4">Rain Princess</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="style"
+              id="option5"
+              value="udnie"
+            />
+            <label class="form-check-label" for="option5">Udnie</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="style"
+              id="option6"
+              value="wave"
+            />
+            <label class="form-check-label" for="option6">Wave</label>
+          </div>
+          <div>
+            <input
+              class="btn btn-lg btn-secondary font-weight-bold border-white bg-white"
+              type="submit"
+              value="Submit"
+            />
+          </div>
+        </form>
+        <hr />
+        <div class="results">
+          <div class="card-group">
+            <div class="card">
+              <img src="..." id="1" class="card-img-top showcase" alt="..." />
+            </div>
+            <div class="card">
+              <img src="..." id="2" class="card-img-top showcase" alt="..." />
+            </div>
+            <div class="card">
+              <img
+                src="/public/assets/spinner.gif"
+                id="3"
+                class="card-img-top showcase"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- <form action="" onsubmit="sendMessage(event)">
+          <input type="text" id="messageText" autocomplete="off" />
+          <button>Send</button>
+        </form>
+        <ul id="messages"></ul> -->
+        <div id="log"></div>
+      </section>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-2.1.4.min.js"
+    ></script>
+    <!-- <script
+      type="text/javascript"
+      src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"
+    ></script> -->
+
+    <script src="{{ url_for('static', path='/js/app.js') }}"></script>
+    <!-- <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+        var socket = io.connect()
+
+        socket.on('connect', function () {
+          socket.emit('my_event', { data: "I'm connected!" })
+        })
+        socket.on('disconnect', function () {
+          $('#log').append('<br>Disconnected')
+        })
+        socket.on('done_processing', function (x) {
+          console.log({ x })
+          alrt('done :', x)
+          $('#log').append('<br>' + x)
+        })
+      })
+    </script> -->
+    <!-- <script>
+      var ws = new WebSocket('ws://localhost:3000/ws')
+      ws.onmessage = function (event) {
+        alert(event.data)
+        var messages = document.getElementById('messages')
+        var message = document.createElement('li')
+        var content = document.createTextNode(event.data)
+        message.appendChild(content)
+        messages.appendChild(message)
+      }
+      function sendMessage (event) {
+        var input = document.getElementById('messageText')
+        ws.send(input.value)
+        input.value = ''
+        event.preventDefault()
+      }
+    </script> -->
+  </body>
+</html>
